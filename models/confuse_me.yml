@@ -2,14 +2,14 @@ options:
   flavour:
     label: 'flavour'
     type: string
-  volume:
-    label: 'volume ml'
+  amount:
+    label: 'amount in ml'
     type: number
     min: 0
     max: 100
     intervall: 1
   cup_size:
-    label: 'third option'
+    label: 'cup size'
     type: value_list
     values:
       - 'small'
@@ -18,17 +18,17 @@ options:
 constraints:
   medium_cup:
     description: 'gonna need a bigger cup for that'
-    if: 'volume >= 20'
+    if: 'amount >= 20'
     then: 'cup_size != small'
   large_cup:
     description: 'somebody is reeaaaly thirsty '
-    if: 'volume >= 70'
+    if: 'amount >= 70'
     then: 'cup_size == large'
 evaluations:
   values:
     ttl:
       description: 'time to loo'
-      base_eval: '1/volume'
+      base: '1/amount'
   rules:
     apple_rule:
       description: 'cannot hold my applejuice'
